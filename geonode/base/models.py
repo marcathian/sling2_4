@@ -101,6 +101,7 @@ class TopicCategory(models.Model):
     description = models.TextField(default='')
     gn_description = models.TextField('GeoNode description', default='', null=True)
     is_choice = models.BooleanField(default=True)
+    fa_class = models.CharField(max_length=64, default='fa-times')
 
     def __unicode__(self):
         return u"{0}".format(self.gn_description)
@@ -268,7 +269,7 @@ class ResourceBase(PolymorphicModel, PermissionLevelMixin):
                                              blank=True, null=True, help_text=maintenance_frequency_help_text)
 
     keywords = TaggableManager(_('keywords'), blank=True, help_text=keywords_help_text)
-    regions = models.ManyToManyField(Region, verbose_name=_('keywords region'), blank=True, null=True,
+    regions = models.ManyToManyField(Region, verbose_name=_('keywords region'), blank=True,
                                      help_text=regions_help_text)
 
     restriction_code_type = models.ForeignKey(RestrictionCodeType, verbose_name=_('restrictions'),
