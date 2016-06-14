@@ -334,8 +334,9 @@ def start_django():
     Start the GeoNode Django application
     """
     bind = options.get('bind', '')
-    foreground = '' if options.get('foreground', False) else '&'
-    sh('python manage.py runserver %s %s' % (bind, foreground))
+    #foreground = '' if options.get('foreground', False) else '&'
+    #sh('python manage.py runserver %s %s' % (bind, foreground))
+    sh('python manage.py runserver 0.0.0.0:8000')# % (bind, foreground))
 
 
 @cmdopts([
